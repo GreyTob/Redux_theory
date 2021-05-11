@@ -1,25 +1,28 @@
-import logo from './logo.svg'
+import React from 'react'
 import classes from './App.module.scss'
 
-function App() {
-  return (
-    <div className={classes.App}>
-      <header className={classes['App-header']}>
-        <img src={logo} className={classes['App-logo']} alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className={classes['App-link']}
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  )
+class App extends React.Component {
+  state = {
+    counter: 0,
+  }
+
+  updateCounter(num) {
+    this.setState({
+      counter: this.state.counter + num,
+    })
+  }
+  render() {
+    return (
+      <div className={classes.App}>
+        <div className={classes.counter}>{this.state.counter}</div>
+        <hr />
+        <div className={classes.Actions}>
+          <button onClick={() => this.updateCounter(1)}>добавить 1</button>
+          <button onClick={() => this.updateCounter(-1)}>вычесть 1</button>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default App
