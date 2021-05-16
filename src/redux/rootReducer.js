@@ -14,6 +14,14 @@ export default function rootReducer(state = initialState, action) {
       return {
         counter: state.counter - 1,
       }
+    case 'TEN':
+      return {
+        counter: state.counter + 10,
+      }
+    case 'SUBTEN':
+      return {
+        counter: state.counter - 10,
+      }
   }
 
   return state

@@ -16,6 +16,8 @@ class App extends React.Component {
         <hr />
         <div className={classes.Actions}>
           <button onClick={this.props.onAdd}>добавить 1</button>
+          <button onClick={this.props.onTen}>добавить 10</button>
+          <button onClick={this.props.onSubTen}>вычесть 10</button>
           <button onClick={this.props.onSub}>вычесть 1</button>
         </div>
       </div>
@@ -35,6 +37,8 @@ function mapDispatchToProps(dispatch) {
     //функция которая добавляет новый action
     onAdd: () => dispatch({ type: 'ADD' }),
     onSub: () => dispatch({ type: 'SUB' }),
+    onTen: () => dispatch({ type: 'TEN' }),
+    onSubTen: () => dispatch({ type: 'SUBTEN' }),
   }
 }
 

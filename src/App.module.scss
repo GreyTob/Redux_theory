@@ -9,8 +9,10 @@
   padding-top: 20px;
 
   button {
-    display: inline-block;
+    margin: 0 auto;
+    display: block;
+    width: 150px;
     padding: 5px 20px;
-    margin-right: 10px;
+    margin-bottom: 10px;
   }
 }
