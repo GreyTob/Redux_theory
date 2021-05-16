@@ -5,7 +5,7 @@ class Counter extends React.Component {
   render() {
     return (
       <div style={{ padding: 20, border: '1px solid #ccc' }}>
-        <h1>Counter {this.props.counter}</h1>
+        <h1>Counter {this.props.counter2}</h1>
         <hr />
         <div>
           <button onClick={() => this.props.onAdd2(100)}>Add 100</button>
@@ -18,7 +18,7 @@ class Counter extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter2.counter,
+    counter2: state.counter2.counter2,
   }
 }
 

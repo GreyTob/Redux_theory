@@ -13,7 +13,7 @@ class App extends React.Component {
     // console.log('APP', this.props)
     return (
       <div className={classes.App}>
-        <div className={classes.counter}>{this.props.counter}</div>
+        <div className={classes.counter}>{this.props.counter1}</div>
         <hr />
         <div className={classes.Actions}>
           <button onClick={this.props.onAdd}>добавить 1</button>
@@ -42,7 +42,7 @@ class App extends React.Component {
 function mapStateToProps(state) {
   // console.log('app state', state)
   return {
-    counter: state.counter1.counter, //теперь данное поле counter в App можно использовать как props
+    counter1: state.counter1.counter1, //теперь данное поле counter в App можно использовать как props
   }
 }
 
