@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import classes from './App.module.scss'
+import Counter from './Counter'
 
 class App extends React.Component {
   updateCounter(num) {
@@ -29,6 +30,8 @@ class App extends React.Component {
           <button onClick={() => this.props.onAddNember(-16)}>
             вычесть 16
           </button>
+
+          <Counter />
         </div>
       </div>
     )
@@ -37,8 +40,9 @@ class App extends React.Component {
 
 //функции, передающиеся в connect(создаются полте того как определен class)
 function mapStateToProps(state) {
+  // console.log('app state', state)
   return {
-    counter: state.counter, //теперь данное поле counter в App можно использовать как props
+    counter: state.counter1.counter, //теперь данное поле counter в App можно использовать как props
   }
 }
 
