@@ -15,20 +15,28 @@ class App extends React.Component {
         <div className={classes.counter}>{this.props.counter}</div>
         <hr />
         <div className={classes.Actions}>
-          <button onClick={() => this.updateCounter(1)}>добавить 1</button>
-          <button onClick={() => this.updateCounter(-1)}>вычесть 1</button>
+          <button onClick={this.props.onAdd}>добавить 1</button>
+          <button onClick={this.props.onSub}>вычесть 1</button>
         </div>
       </div>
     )
   }
 }
 
-//функции, передающиеся в connect
+//функции, передающиеся в connect(создаются полте того как определен class)
 function mapStateToProps(state) {
   return {
-    counter: state.counter, //теперь данное поле в App можно использовать как props, а не как стейт
+    counter: state.counter, //теперь данное поле counter в App можно использовать как props
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    //функция которая добавляет новый action
+    onAdd: () => dispatch({ type: 'ADD' }),
+    onSub: () => dispatch({ type: 'SUB' }),
   }
 }
 
 //connect коннект возсращает функцию в которую затем вкладывается компонент
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
