@@ -20,6 +20,16 @@ class App extends React.Component {
           <button onClick={this.props.onSubTen}>вычесть 10</button>
           <button onClick={this.props.onSub}>вычесть 1</button>
         </div>
+
+        <div className={classes.Actions}>
+          {/* передать нужное число в колбэк функцию или методом bind */}
+          <button onClick={() => this.props.onAddNember(15)}>
+            добавить 15
+          </button>
+          <button onClick={() => this.props.onAddNember(-16)}>
+            вычесть 16
+          </button>
+        </div>
       </div>
     )
   }
@@ -37,8 +47,10 @@ function mapDispatchToProps(dispatch) {
     //функция которая добавляет новый action
     onAdd: () => dispatch({ type: 'ADD' }),
     onSub: () => dispatch({ type: 'SUB' }),
-    onTen: () => dispatch({ type: 'TEN' }),
-    onSubTen: () => dispatch({ type: 'SUBTEN' }),
+    onTen: () => dispatch({ type: 'ADD_TEN' }),
+    onSubTen: () => dispatch({ type: 'SUB_TEN' }),
+    //добавить кастомное число (в payload)
+    onAddNember: (number) => dispatch({ type: 'ADD_NUMBER', payload: number }),
   }
 }
 
