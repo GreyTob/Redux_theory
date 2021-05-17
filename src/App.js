@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import classes from './App.module.scss'
 import Counter from './Counter'
+import { add, add_number, add_ten, sub, sub_ten } from './redux/actions/actions'
 
 class App extends React.Component {
   updateCounter(num) {
@@ -17,7 +18,7 @@ class App extends React.Component {
         <hr />
         <div className={classes.Actions}>
           <button onClick={this.props.onAdd}>добавить 1</button>
-          <button onClick={this.props.onTen}>добавить 10</button>
+          <button onClick={this.props.onAddTen}>добавить 10</button>
           <button onClick={this.props.onSubTen}>вычесть 10</button>
           <button onClick={this.props.onSub}>вычесть 1</button>
         </div>
@@ -49,12 +50,12 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     //функция которая добавляет новый action
-    onAdd: () => dispatch({ type: 'ADD' }),
-    onSub: () => dispatch({ type: 'SUB' }),
-    onTen: () => dispatch({ type: 'ADD_TEN' }),
-    onSubTen: () => dispatch({ type: 'SUB_TEN' }),
+    onAdd: () => dispatch(add()),
+    onSub: () => dispatch(sub()),
+    onAddTen: () => dispatch(add_ten()),
+    onSubTen: () => dispatch(sub_ten()),
     //добавить кастомное число (в payload)
-    onAddNember: (number) => dispatch({ type: 'ADD_NUMBER', payload: number }),
+    onAddNember: (number) => dispatch(add_number(number)),
   }
 }
 
