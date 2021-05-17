@@ -39,3 +39,17 @@ export function add2(number) {
     payload: number,
   }
 }
+
+//redux-thunk позволяет вместо обычного объекта вернуть новую функцию в кот можно запускать код асинхронно
+//эта функция принимает dispatch в который можно положить action-creator
+export function Async_Add(number) {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(add_number(number))
+    }, 3000)
+  }
+  // return {
+  //   type: ASYNC_ADD,
+  //   payload: number,
+  // }
+}

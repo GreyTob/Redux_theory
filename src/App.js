@@ -2,7 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import classes from './App.module.scss'
 import Counter from './Counter'
-import { add, add_number, add_ten, sub, sub_ten } from './redux/actions/actions'
+import {
+  add,
+  add_number,
+  add_ten,
+  sub,
+  sub_ten,
+  Async_Add,
+} from './redux/actions/actions'
 
 class App extends React.Component {
   updateCounter(num) {
@@ -32,6 +39,10 @@ class App extends React.Component {
             вычесть 16
           </button>
 
+          <button onClick={() => this.props.onAsyncAdd(100)}>
+            асинхронно добавить 100
+          </button>
+
           <Counter />
         </div>
       </div>
@@ -56,8 +67,11 @@ function mapDispatchToProps(dispatch) {
     onSubTen: () => dispatch(sub_ten()),
     //добавить кастомное число (в payload)
     onAddNember: (number) => dispatch(add_number(number)),
+
+    //асинхронно
+    onAsyncAdd: (number) => dispatch(Async_Add(number)),
   }
 }
 
-//connect коннект возсращает функцию в которую затем вкладывается компонент
+//connect коннект возвращает функцию в которую затем вкладывается компонент
 export default connect(mapStateToProps, mapDispatchToProps)(App)

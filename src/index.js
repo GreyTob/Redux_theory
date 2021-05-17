@@ -4,6 +4,7 @@ import './index.module.scss'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { createStore, applyMiddleware } from 'redux'
+import reduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import rootReducer from './redux/rootReducer'
 
@@ -26,7 +27,10 @@ const loggerMiddlewear = (store) => (next) => (action) => {
 }
 
 //в applyMiddleware передаются Middleware'ы, которые мы хотим использовать
-const store = createStore(rootReducer, applyMiddleware(loggerMiddlewear))
+const store = createStore(
+  rootReducer,
+  applyMiddleware(loggerMiddlewear, reduxThunk)
+)
 
 const app = (
   <Provider store={store}>
