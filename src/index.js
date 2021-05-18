@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom'
 import './index.module.scss'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import reduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import rootReducer from './redux/rootReducer'
+
+const composeEnhancers =
+  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+        // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+      })
+    : compose
 
 // function loggerMiddlewear(store) {
 //   return function (next) {
@@ -29,7 +36,7 @@ const loggerMiddlewear = (store) => (next) => (action) => {
 //в applyMiddleware передаются Middleware'ы, которые мы хотим использовать
 const store = createStore(
   rootReducer,
-  applyMiddleware(loggerMiddlewear, reduxThunk)
+  composeEnhancers(applyMiddleware(loggerMiddlewear, reduxThunk))
 )
 
 const app = (
